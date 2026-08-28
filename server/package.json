@@ -1,0 +1,16 @@
+{
+  "name": "gumistudy-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "구미스터디 경쟁 모드 채점 검증 서버 + AI 문제 생성 프록시 (선택적으로 실행)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

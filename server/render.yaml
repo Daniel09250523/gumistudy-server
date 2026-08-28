@@ -1,0 +1,20 @@
+# render.yaml — Render "Blueprint" 배포 설정.
+# 이 파일이 있는 저장소를 Render 대시보드에서 New > Blueprint 로 연결하면
+# 아래 서비스가 build/start 명령까지 자동으로 인식되어, 대시보드에서 값을
+# 하나하나 입력할 필요 없이 몇 번의 클릭으로 배포됩니다.
+# (server/ 폴더 "안"이 저장소 루트가 되도록 push 하는 것을 권장합니다.
+#  — 자세한 방법은 README-DEPLOY.md 참고)
+services:
+  - type: web
+    name: gumistudy-server
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: AI_API_KEY
+        sync: false   # 대시보드에서 직접 입력 — .env처럼 저장소에는 절대 커밋하지 않음
+      - key: AI_API_URL
+        value: https://api.openai.com/v1/chat/completions
+      - key: AI_MODEL
+        value: gpt-4o-mini
